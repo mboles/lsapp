@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Quick Start: FTP Batch Provisioning</title>
+<link rel="stylesheet" type="text/css" href="http://files.brightcove.com/BCL-document.css">
+</head>
+<body style="font-family:sans-serif;">
+<h1>Quick Start: Using FTP Batch Provisioning to update video assets</h1>
+<!-- beginning of Drupal content -->
+<p class="BCL-objective">This Quick Start will show you how to update properties for you videos using FTP batch provisioning.</p>
+<!--break-->
+<div>
+<p>After completing this Quick Start you should be able to:</p>
+<ul class="BCL_objectivesList">
+    <li>Add video still and thumbnail images to your video</li>
+    <li>Schedule videos to become active at a specified date and time</li>
+</ul>
+</div>
+<p class="BCL-aside">Note: FTP Batch Provisioning is available only in Video Cloud Pro and Enterprise editions.</p>
+<div class="BCL-task">
+<h2>Hands-On Task: Updating properties for your video</h2>
+<p>In this task, you will update some properties for your videos using FTP batch provisioning.</p>
+<div class="BCL-taskSubsection">
+<h3>Create the XML manifest file</h3>
+<p>First, you will create the XML manifest file.</p>
+<ol class="BCL-taskSteps">
+    <li>Create an XML manifest file with the XML declaration. Include the <code>&lt;publisher-upload-manifest&gt;</code> root tag with a nested <code>&lt;notify&gt;</code> tag.</li>
+    <p class="BCL-aside">Note: For details on how to create the XML manifest file with the root tag, refer to <a href="http://files.brightcove.com/BatchProvisioningQuickStart.xml">Quick Start: Using FTP batch provisioning to upload videos</a>.</p>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Identify the video assets to update</h3>
+<p>Next, you will identify the video assets to update using the <code>&lt;title&gt;</code> tag.</p>
+<ol class="BCL-taskSteps">
+    <li>Add an <code>&lt;title&gt;</code> tag nested in the <code>&lt;publisher-upload-manifest&gt;</code> code block, and just below the <code>&lt;notify&gt;</code> tag.</li>
+    <li>In this tag you will use two attributes. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>refid</td>
+                <td>Required</td>
+                <td>Unique identifier of the asset to be updated. Maximum length 150 characters.</td>
+            </tr>
+            <tr>
+                <td>overlay-update</td>
+                <td>Optional</td>
+                <td>TRUE or FALSE. If true, and if this video already exists, only the attributes and child elements of this title that you explicitly set will be modified. If false (the default), any attributes or child elements of this title that you do not explicitly set will be set to null.</td>
+            </tr>
+        </tbody>
+    </table>
+    <li>Enter the following attribute/value pairs in the tag:
+    <ul>
+        <li>refid: <strong>seahorse_title_refid</strong></li>
+        <li>overlay-update: <strong>TRUE</strong></li>
+    </ul>
+    </li>
+    <li>Your code should appear as follows, but with your respective values.
+    <pre><code>&lt;title refid=&quot;seahorse_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt; &lt;/title&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Add a video still and thumbnail image to your video</h3>
+<p>Next, you will add a video still and thumbnail image to each of your video assets using the <code>&lt;title&gt;</code> tag.</p>
+<ol start="5" class="BCL-taskSteps">
+    <li>In the <code>&lt;title&gt;</code> tag you created in the last step, you will add two additional attributes. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>video-still-refid</td>
+                <td>Optional</td>
+                <td>The reference ID parameter of a video still asset. This reference ID could be either one previously entered into the system or one specified in a title tag within the same manifest file.</td>
+            </tr>
+            <tr>
+                <td>thumbnail-refid</td>
+                <td>Optional</td>
+                <td>The reference ID parameter of a thumbnail asset. This reference ID could be either one previously entered into the system or one specified in a title tag within the same manifest file.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="BCL-aside">Note: Do not use these attributes if you are also using the <code>encode-to</code> attribute for the corresponding video asset. When Video Cloud transcodes a video, a video still image and thumbnail image is automatically created.</p>
+    <li>Enter the following attribute/value pairs in the &lt;<code>title&gt;</code> tag:
+    <ul>
+        <li>video-still-refid: <strong>seahorse_video_still_refid</strong></li>
+        <li>thumbnail-refid: <strong>seahorse_thumbnail_refid</strong></li>
+    </ul>
+    </li>
+    <li>Your code should appear as follows, but with your respective values.
+    <pre><code>&lt;title refid=&quot;seahorse_title_refid&quot;       overlay-update=&quot;TRUE&quot;<strong>       video-still-refid=&quot;seahorse_video_still_refid&quot;       thumbnail_refid=&quot;seahorse_thumbnail_refid&quot;&gt;</strong> &lt;/title&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Schedule videos to become active at a specified date and time</h3>
+<p>Next, you will schedule when your video will become active and when it will expire  using the <code>&lt;title&gt;</code> tag.</p>
+<ol start="5" class="BCL-taskSteps">
+    <li>In the <code>&lt;title&gt;</code> tag you created in an earlier step, you will add two additional attributes. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>start-date</td>
+                <td>Optional</td>
+                <td>The primary scheduling start date and time for the video. The required format is MM/DD/YYYY HH:MM AM. For example: start-date=&quot;01/01/2008 12:00 AM&quot;.</td>
+            </tr>
+            <tr>
+                <td>end-date</td>
+                <td>Optional</td>
+                <td>The primary scheduling end date and time for the video. The required format is MM/DD/YYYY HH:MM AM. For example: start-date=&quot;12/31/2008 12:00 AM&quot;.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="BCL-aside">Note: The input in the upload manifest for the start date/end date is Pacific time. However, once you have completed your upload, the start date/end date displayed in the Media module will be the local time you have defined from Home &gt; Profile &gt; Video Scheduling Time Zone.</p>
+    <li>Enter the following attribute/value pairs in the &lt;<code>title&gt;</code> tag:
+    <ul>
+        <li>start-date: <strong>&quot;04/01/2013 12:00 AM&quot; </strong></li>
+        <li>end-date: <strong>&quot;04/15/2013 12:00 AM&quot;</strong></li>
+    </ul>
+    </li>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;  &lt;title refid=&quot;seahorse_title_refid&quot;       overlay-update=&quot;TRUE&quot;       video-still-refid=&quot;seahorse_video_still_refid&quot;       thumbnail_refid=&quot;seahorse_thumbnail_refid&quot;<strong>       start-date=&quot;04/01/2013 12:00 AM&quot;       end-date=&quot;04/15/2013 12:00 AM&quot;&gt;</strong> &lt;/title&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection"><!-- Steps subheading -->
+<h3>Submit the XML manifest file to the Video Cloud server</h3>
+<p>Now, you will submit the XML manifest file to create a smart playlist.</p>
+<ol start="7">
+    <li>Upload the XML manifest file to the Brightcove server using an FTP client.</li>
+    <li>Wait for the processing to complete. The XML manifest file should disappear from your FTP client. You may have to refresh the view.</li>
+    <p class="BCL-aside">By default, you will receive error messages in an email. You will also receive success messages if you set the <code>report-success</code> attribute in the <code>&lt;publisher-upload-manifest&gt;</code> tag to a value of <code>true</code>.</p>
+    <li>You can now go into the Video Cloud Studio and navigate to the Media module to see your updated video assets.</li>
+</ol>
+</div>
+<div class="BCL_references">
+<h2 class="BCL_nextStepsHeading">Next Step</h2>
+<ul>
+    <li><a href="internal:node/10924">Using FTP Batch Provisioning to Create Playlists</a></li>
+</ul>
+<h2 class="BCL_referenceHeading">Related Documents</h2>
+<ul>
+    <li><a href="internal:node/10921">Quick Start to FTP Batch Processing Overview</a></li>
+    <li><a href="internal:node/1144">Using FTP Batch Provisioning</a></li>
+    <li><a href="internal:node/560">FTP Batch Provisioning: Reference for the XML Manifest</a></li>
+    <li><a href="internal:node/9447">Best Practices for Using Batch Provisioning</a></li>
+</ul>
+</div>
+</div>
+<!-- End of Drupal content -->
+</div></body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Quick Start: FTP Batch Provisioning</title>
+<link rel="stylesheet" type="text/css" href="http://files.brightcove.com/BCL-document.css">
+</head>
+<body style="font-family:sans-serif;">
+<h1>Quick Start: Using FTP Batch Provisioning to delete assets</h1>
+<!-- beginning of Drupal content -->
+<p class="BCL-objective">This Quick Start will show you how to delete a video asset and a playlist using FTP batch provisioning.</p>
+<!--break-->
+<div>
+<p>After completing this Quick Start you should be able to:</p>
+<ul class="BCL_objectivesList">
+    <li>Delete  video assets</li>
+    <li>Delete a playlist</li>
+</ul>
+</div>
+<p class="BCL-aside">Note: FTP Batch Provisioning is available only in Video Cloud Pro and Enterprise editions.</p>
+<div class="BCL-task">
+<h2>Hands-On Task: Deleting video and playlist assets</h2>
+<p>In this task, you will delete a video and playlist asset   using FTP batch provisioning.</p>
+<div class="BCL-taskSubsection">
+<h3>Create the XML manifest file</h3>
+<p>First, you will create the XML manifest file.</p>
+<ol class="BCL-taskSteps">
+    <li>Create an XML manifest file with the XML declaration. Include the <code>&lt;publisher-upload-manifest&gt;</code> root tag with a nested <code>&lt;notify&gt;</code> tag.</li>
+    <p class="BCL-aside">Note: For details on how to create the XML manifest file with the root tag, refer to <a href="http://files.brightcove.com/BatchProvisioningQuickStart.xml">Quick Start: Using FTP batch provisioning to upload videos</a>.</p>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  ...<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Delete an asset</h3>
+<p>Next, you will delete an asset using the <code>&lt;delete-asset&gt;</code> tag.</p>
+<ol class="BCL-taskSteps">
+    <li value="3">Add a <code>&lt;delete-asset&gt;</code> tag nested in the <code>&lt;publisher-upload-manifest&gt;</code> code block, and just below the <code>&lt;notify&gt;</code> tag.</li>
+    <li>In this tag, you will use one attribute. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>refid</td>
+                <td>Required</td>
+                <td>The refid of your asset to be deleted.</td>
+            </tr>
+        </tbody>
+    </table>
+    <li>Enter the following attribute/value pairs in the tag:
+    <ul>
+        <li>refid: <strong>woodpecker_asset_refid</strong></li>
+    </ul>
+    </li>
+    <li>Your code should appear as follows:
+    <pre><code>&lt;delete-asset refid=&quot;woodpecker_asset_refid&quot;/&gt;</code></pre>
+    </li>
+    <p class="BCL-aside">You can not delete an asset without deleting its associated title. You also can not delete an asset if it is referenced in a manual playlist. You can, however, delete an asset which is referenced in a smart playlist.</p>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Delete a video</h3>
+<p>Next, you will delete a video using the&lt;<code>delete-title&gt;</code> tag.</p>
+<ol class="BCL-taskSteps">
+    <li value="7">Add a <code>&lt;delete-title&gt;</code> tag nested in the <code>&lt;publisher-upload-manifest&gt;</code> code block, and just below the <code>&lt;delete-asset&gt;</code> tag.</li>
+    <li>In this tag, you will use one attribute. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>refid</td>
+                <td>Required</td>
+                <td>The title refid of your video to be deleted.</td>
+            </tr>
+        </tbody>
+    </table>
+    <li value="9">Enter the following attribute/value pairs in the tag:
+    <ul>
+        <li>refid: <strong>woodpecker_title_refid</strong></li>
+    </ul>
+    </li>
+    <li>Your code should appear as follows:
+    <pre><code>&lt;delete-title refid=&quot;woodpecker_title_refid&quot;/&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection">
+<h3>Delete a playlist</h3>
+<p>Next, you will delete a playlist using the&lt;<code>delete-lineup&gt;</code> tag.</p>
+<ol class="BCL-taskSteps">
+    <li value="11">Add a <code>&lt;delete-lineup&gt;</code> tag nested in the <code>&lt;publisher-upload-manifest&gt;</code> code block, and just below the <code>&lt;delete-title&gt;</code> tag.</li>
+    <li>In this tag, you will use one attribute. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="96" scope="col">Attribute</th>
+                <th width="94" scope="col">Required</th>
+                <th width="226" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>refid</td>
+                <td>Required</td>
+                <td>The refid of your playlist to be deleted.</td>
+            </tr>
+        </tbody>
+    </table>
+    <li value="13">Enter the following attribute/value pairs in the tag:
+    <ul>
+        <li>refid: <strong>woodpecker_title_refid</strong></li>
+    </ul>
+    </li>
+    <li>Your code should appear as follows:
+    <pre><code>&lt;delete-lineup refid=&quot;manualPlaylist1&quot;/&gt;</code></pre>
+    </li>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot;/&gt;<strong>  &lt;delete-asset refid=&quot;woodpecker_asset_refid&quot;/&gt;  &lt;delete-title refid=&quot;woodpecker_title_refid&quot;/&gt;  &lt;delete-lineup refid=&quot;manualPlaylist1&quot;/&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection"><!-- Steps subheading -->
+<h3>Submit the XML manifest file to the Video Cloud server</h3>
+<p>Now, you will submit the XML manifest file to delete your video assets and your manual playlist.</p>
+<ol start="6">
+    <li value="16">Upload the XML manifest file to the Brightcove server using an FTP client.</li>
+    <li>Wait for the processing to complete. The XML manifest file should disappear from your FTP client. You may have to refresh the view.</li>
+    <p class="BCL-aside">By default, you will receive error messages in an email. You will also receive success messages if you set the <code>report-success</code> attribute in the <code>&lt;publisher-upload-manifest&gt;</code> tag to a value of <code>true</code>.</p>
+    <li>You can now go into the Video Cloud Studio and navigate to the Media module to see your updated video assets and your new manual playlist.</li>
+</ol>
+</div>
+</div>
+<div class="BCL_references">
+<h2 class="BCL_nextStepsHeading">Next Step</h2>
+<ul>
+    <li><a href="internal:node/">Using FTP Batch Provisioning to Re-Encode Videos</a></li>
+</ul>
+<h2 class="BCL_referenceHeading">Related Documents</h2>
+<ul>
+    <li><a href="internal:node/10921">Quick Start to FTP Batch Processing Overview</a></li>
+    <li><a href="internal:node/1144">Using FTP Batch Provisioning</a></li>
+    <li><a href="internal:node/560">FTP Batch Provisioning: Reference for the XML Manifest</a></li>
+    <li><a href="internal:node/9447">Best Practices for Using Batch Provisioning</a></li>
+</ul>
+</div>
+<!-- End of Drupal content -->
+</body>
+</html>

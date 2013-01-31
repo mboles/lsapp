@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Quick Start: FTP Batch Provisioning</title>
+<link rel="stylesheet" type="text/css" href="http://files.brightcove.com/BCL-document.css">
+</head>
+<body style="font-family:sans-serif;">
+<h1>Quick Start: Using FTP Batch Provisioning to re-encode videos</h1>
+<!-- beginning of Drupal content -->
+<p class="BCL-objective">This Quick Start will show you how to re-encode videos  using FTP batch provisioning.</p>
+<!--break-->
+<div>
+<p>After completing this Quick Start you should be able to:</p>
+<ul class="BCL_objectivesList">
+    <li>Re-encode multiple videos in one batch job</li>
+</ul>
+</div>
+<p class="BCL-aside">Note: FTP Batch Provisioning is available only in Video Cloud Pro and Enterprise editions.</p>
+<div class="BCL-task">
+<h2>Hands-On Task: Re-encoding multiple videos</h2>
+<p>In this task, you will use FTP batch provisioning to re-encode multiple videos.</p>
+<p class="BCL-aside">Note: The term re-encoding is called re-transcoding in the Video Cloud Studio interface.</p>
+<div class="BCL-taskSubsection">
+<h3>Create the XML manifest file</h3>
+<p>First, you will create the XML manifest file.</p>
+<ol class="BCL-taskSteps">
+    <li>Create an XML manifest file with the XML declaration. Include the <code>&lt;publisher-upload-manifest&gt;</code> root tag with a nested <code>&lt;notify&gt;</code> tag.</li>
+    <p class="BCL-aside">Note: For details on how to create the XML manifest file with the root tag, refer to <a href="http://files.brightcove.com/BatchProvisioningQuickStart.xml">Quick Start: Using FTP batch provisioning to upload videos</a>.</p>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection"><!-- Steps subheading -->
+<h3>Identify the videos to re-encode</h3>
+<p>Next, you will identify the videos to re-encode using the <code>&lt;reencode-from-existing-source&gt;</code> tag. This tag re-encodes from the existing source file in your Video Cloud  Media Library. All of the video's metadata will be retained.</p>
+<ol class="BCL-taskSteps">
+    <li value="3">Add a <code>&lt;reencode-from-existing-source&gt;</code> tag nested in the <code>&lt;publisher-upload-manifest&gt;</code> code block just below the last <code>&lt;notify&gt;</code>tag.</li>
+    <li>In this tag you will use four attributes. Read the following as an introduction to their use.</li>
+    <table border="1">
+        <tbody>
+            <tr>
+                <th width="123" scope="col">Attribute</th>
+                <th width="97" scope="col">Required</th>
+                <th width="398" scope="col">Description</th>
+            </tr>
+            <tr>
+                <td>title-refid</td>
+                <td>Required</td>
+                <td>The reference ID of the video to be re-encoded</td>
+            </tr>
+            <tr>
+                <td>encode-to</td>
+                <td>Optional</td>
+                <td>FLV or MP4. If present, encode this video file to the specified encoding. FLV represents H.263, while MP4 represents H.264. If this attribute is absent, the publisher's default codec will be used.</td>
+            </tr>
+            <tr>
+                <td>encode-multiple</td>
+                <td>Optional</td>
+                <td>TRUE or FALSE. If TRUE, multiple renditions will be created for the video. If FALSE, only a single rendition will be created. If this attribute is absent, its value defaults to TRUE.</td>
+            </tr>
+            <tr>
+                <td>overwrite-images</td>
+                <td>Optional</td>
+                <td>TRUE or FALSE. If TRUE, the images for the re-encoded video (thumbnail and still) will be replaced by the new image captured during re-encoding. If FALSE, the video's existing images will remain. If this attribute is absent, its value defaults to FALSE. If the video does not have a thumbnail or a still associated with it, they will be created during the re-encode regardless of the value of this attribute.</td>
+            </tr>
+        </tbody>
+    </table>
+    <li>Enter the following attribute/value pairs in the tag:
+    <ul>
+        <li>title-refid: <em>Your specific value goes here</em></li>
+        <li>encode-to: MP4</li>
+        <li>encode-multiple: TRUE</li>
+        <li>overwrite-images: TRUE</li>
+    </ul>
+    </li>
+    <li>Check to be sure your manifest file appears as follows, but with your respective values.
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;  &lt;reencode-from-existing-source      title-refid=&quot;seahorse_title_refid&quot;      encode-to=&quot;MP4&quot;      encode-multiple=&quot;TRUE&quot;      overwrite-images=&quot;TRUE&quot;/&gt; <br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    </li>
+</ol>
+</div>
+<div class="BCL-taskSubsection"><!-- Steps subheading -->
+<h3>Submit the XML manifest file to the Video Cloud server</h3>
+<p>Now, you will submit the XML manifest file to  create a manual playlist.</p>
+<ol start="7">
+    <li>Upload the XML manifest file to the Brightcove server using an FTP client.</li>
+    <li>Wait for the processing to complete. The XML manifest file should disappear from your FTP client. You may have to refresh the view.</li>
+    <p class="BCL-aside">By default, you will receive error messages in an email. You will also receive success messages if you set the <code>report-success</code> attribute in the <code>&lt;publisher-upload-manifest&gt;</code> tag to a value of <code>true</code>.</p>
+    <li>You can now go into the Video Cloud Studio and navigate to the Media module to see the new renditions created for your video files.</li>
+</ol>
+</div>
+<div class="BCL_references">
+<h2 class="BCL_referenceHeading">Related Documents</h2>
+<ul>
+    <li><a href="internal:node/10921">Quick Start to FTP Batch Processing Overview</a></li>
+    <li><a href="internal:node/1144">Using FTP Batch Provisioning</a></li>
+    <li><a href="internal:node/560">FTP Batch Provisioning: Reference for the XML Manifest</a></li>
+    <li><a href="internal:node/9447">Best Practices for Using Batch Provisioning</a></li>
+</ul>
+</div>
+</div>
+  <!-- End of Drupal content --> 
+</div>
+</body>
+</html>
