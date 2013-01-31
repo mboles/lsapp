@@ -65,13 +65,13 @@
     </ul>
     </li>
     <li>Your code should appear as follows, but with your respective values.
-    <pre><code>&lt;manual-lineup name=&quot;Manual Playlist1&quot;       refid=&quot;manualPlaylist1&quot;&gt; &lt;/manual-lineup&gt;</code></pre>
+    <pre><code>&lt;manual-lineup name=&quot;Manual Playlist1&quot;<br />     refid=&quot;manualPlaylist1&quot;&gt;<br />&lt;/manual-lineup&gt;</code></pre>
     </li>
     <li value="7">Add a <code>&lt;title-refid&gt;</code> tag nested in the <code>&lt;manual-lineup&gt;</code> tag block to identify each video asset to add to your manual playlist.
-    <pre><code>&lt;title-refid&gt;woodpecker_title_refid&lt;/title-refid&gt; &lt;title-refid&gt;seahorse_title_refid&lt;/title-refid&gt;</code></pre>
+    <pre><code>&lt;title-refid&gt;woodpecker_title_refid&lt;/title-refid&gt;<br />&lt;title-refid&gt;seahorse_title_refid&lt;/title-refid&gt;</code></pre>
     </li>
     <li>Check to be sure your manifest file appears as follows, but with your respective values.
-    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;  &lt;manual-lineup name=&quot;Manual Playlist1&quot;       refid=&quot;manualPlaylist1&quot;       active=&quot;TRUE&quot;&gt;       &lt;title-refid&gt;woodpecker_title_refid&lt;/title-refid&gt;       &lt;title-refid&gt;seahorse_title_refid&lt;/title-refid&gt;   &lt;/manual-lineup&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<strong><br /> &lt;manual-lineup name=&quot;Manual Playlist1&quot;<br />     refid=&quot;manualPlaylist1&quot;&gt;<br />     &lt;title-refid&gt;woodpecker_title_refid&lt;/title-refid&gt;<br />     &lt;title-refid&gt;seahorse_title_refid&lt;/title-refid&gt;<br /> &lt;/manual-lineup&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </li>
 </ol>
 </div>
@@ -137,7 +137,7 @@
     </ul>
     </li>
     <li>Check to be sure your manifest file appears as follows, but with your respective values.
-    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;title refid=&quot;woodpecker_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt;   &lt;/title&gt;   &lt;title refid=&quot;seahorse_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt;   &lt;/title&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;title refid=&quot;woodpecker_title_refid&quot;<br />      overlay-update=&quot;TRUE&quot;&gt;<br />  &lt;/title&gt;<br />  &lt;title refid=&quot;seahorse_title_refid&quot;<br />      overlay-update=&quot;TRUE&quot;&gt;<br />  &lt;/title&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </li>
 </ol>
 </div>
@@ -147,11 +147,11 @@
 <ol class="BCL-taskSteps">
     <li value="8">Add a <code>&lt;tag&gt;</code> element nested in the <code>&lt;title&gt;</code> code block.</li>
     <li>For the <code>&lt;title&gt;</code> tag with <code>&lt;refid=&quot;woodpecker_title_refid&quot;&gt;</code>, add a tag element block with a value of <strong>bird</strong>.
-    <pre><code>&lt;title refid=&quot;woodpecker_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt;<strong>       &lt;tag&gt;bird&lt;/tag&gt;</strong>   &lt;/title&gt;</code></pre>
+    <pre><code>&lt;title refid=&quot;woodpecker_title_refid&quot;<br />     overlay-update=&quot;TRUE&quot;&gt;<strong><br />     &lt;tag&gt;bird&lt;/tag&gt;</strong><br />&lt;/title&gt;</code></pre>
     </li>
     <li value="10">For the <code>&lt;title&gt;</code> tag with <code>&lt;refid=&quot;seahorse_title_refid&quot;&gt;</code>, add a tag element block with a value of <strong>fish</strong>.</li>
     <li>Check to be sure your manifest file appears as follows, but with your respective values.
-    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br /> &lt;title refid=&quot;woodpecker_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt;<strong>       &lt;tag&gt;bird&lt;/tag&gt;</strong>   &lt;/title&gt;   &lt;title refid=&quot;seahorse_title_refid&quot;       overlay-update=&quot;TRUE&quot;&gt;<strong>       &lt;tag&gt;fish&lt;/tag&gt;</strong>   &lt;/title&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br /> &lt;title refid=&quot;woodpecker_title_refid&quot;<br />     overlay-update=&quot;TRUE&quot;&gt;<strong><br />     &lt;tag&gt;bird&lt;/tag&gt;</strong><br /> &lt;/title&gt;<br /> &lt;title refid=&quot;seahorse_title_refid&quot;<br />     overlay-update=&quot;TRUE&quot;&gt;<strong><br />     &lt;tag&gt;fish&lt;/tag&gt;</strong><br /> &lt;/title&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </li>
     <p class="BCL-aside">Note: The metadata for the <code>&lt;tag&gt;</code> element can be read from your content management system (CMS) and used here to update your videos.</p>
 </ol>
@@ -194,13 +194,13 @@
     </ul>
     </li>
     <li>Your code should appear as follows, but with your respective values.
-    <pre><code>&lt;automatic-lineup name=&quot;Smart Playlist1&quot;       refid=&quot;smartPlaylist1&quot;       tag-filer=&quot;OR&quot;&gt; &lt;/automatic-lineup&gt;</code></pre>
+    <pre><code>&lt;automatic-lineup name=&quot;Smart Playlist1&quot;<br />     refid=&quot;smartPlaylist1&quot;<br />     tag-filer=&quot;OR&quot;&gt;<br /> &lt;/automatic-lineup&gt;</code></pre>
     </li>
     <li value="16">Add a <code>&lt;title-tag&gt;</code> element nested in the <code>&lt;automatic-lineup&gt;</code> tag block to identify each tag value to select from your video assets to add to your smart playlist. In this example, you will create a smart playlist with videos that have a tag value of &quot;bird&quot; or a tag value of &quot;fish&quot;.
-    <pre><code>&lt;title-tag&gt;bird&lt;/title-tag&gt; &lt;title-tag&gt;fish&lt;/title-tag&gt;</code></pre>
+    <pre><code>&lt;title-tag&gt;bird&lt;/title-tag&gt;<br />&lt;title-tag&gt;fish&lt;/title-tag&gt;</code></pre>
     </li>
     <li>Check to be sure your manifest file appears as follows, but with your respective values.
-    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<strong>   &lt;automatic-lineup name=&quot;Smart Playlist1&quot;       refid=&quot;smartPlaylist1&quot;       tag-filter=&quot;OR&quot;&gt;       &lt;title-tag&gt;bird&lt;/title-tag&gt;       &lt;title-tag&gt;fish&lt;/title-tag&gt;   &lt;/automatic-lineup&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
+    <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;<br /> &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<strong><br />   &lt;automatic-lineup name=&quot;Smart Playlist1&quot;<br />       refid=&quot;smartPlaylist1&quot;<br />       tag-filter=&quot;OR&quot;&gt;<br />       &lt;title-tag&gt;bird&lt;/title-tag&gt;<br />       &lt;title-tag&gt;fish&lt;/title-tag&gt;<br />   &lt;/automatic-lineup&gt;</strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </li>
 </ol>
 </div>
