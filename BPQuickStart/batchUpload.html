@@ -65,7 +65,7 @@
     <div class="BCL-taskSubsection"><!-- Steps subheading -->
     <h3>Create the XML manifest file</h3>
     <p>Then, you will create the XML manifest file.</p>
-    <p class="BCL-aside">Note: The manifest file provides Video Cloud all the information it needs to process your upload and make them available on the Video Cloud servers. The manifest file must be built using XML and CANNOT have any formatting mistakes. If you wish, you may download the completed manifest file <a href="http://files.brightcove.com/BatchProvisioningQuickStart.xml">here</a>. The only difference between the manifest you can download and the instructions below are that in the downloadable manifest three video assets are uploaded instead of just one.</p>
+    <p class="BCL-aside">Note: The manifest file provides Video Cloud all the information it needs to process your upload and make them available on the Video Cloud servers. The manifest file must be built using XML and CANNOT have any formatting mistakes.</p>
     <ol start="3">
         <li>Create a file with a text editor and save it with any file name, but you must use <code>.xml</code> as the file extension.</li>
         <li>The first line of the file is the XML declaration.
@@ -109,7 +109,7 @@
         <pre><code>&lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;</code></pre>
         </li>
         <li>Check to be sure your manifest file appears as follows, but with your respective values.
-        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
+        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;aaa@gmail.com&quot; /&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
         </li>
     </ol>
     </div>
@@ -170,7 +170,8 @@
         </ul>
         </li>
         <li>Check to be sure your manifest file appears as follows, but, with your respective values.</li>
-        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1507807800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef73&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt; </strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
+        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef73&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt; </strong>
+&lt;/publisher-upload-manifest&gt;</code></pre>
     </ol>
     </div>
     <div class="BCL-taskSubsection"><!-- Steps subheading -->
@@ -223,7 +224,7 @@
         <li>Also enter a long description using the <code>&lt;long-description&gt;</code> child tag block.</li>
         <pre><code>    &lt;long-description&gt;<br />      Long description for woodpecker.<br />    &lt;/long-description&gt;</code></pre>
         <li>The <code>&lt;title&gt;</code> tag is now complete. Check to be sure your manifest file appears as follows, but, with your respective values.</li>
-        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  &lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef738&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt;<br />  <strong>&lt;title name=&quot;Woodpecker&quot;<br />      refid=&quot;woodpecker_title_refid&quot;<br />      active=&quot;TRUE&quot;<br />      video-full-refid=&quot;woodpecker_asset_refid&quot;&gt;<br />    &lt;short-description&gt;<br />      Short description for woodpecker.<br />    &lt;/short-description&gt;<br />    &lt;long-description&gt;<br />      Long description for woodpecker.<br />    &lt;/long-description&gt;<br />  &lt;/title&gt;<br /></strong>&lt;/publisher-upload-manifest&gt;</code></pre>
+        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;aaa@gmail.com&quot; /&gt;<br />  &lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef738&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt;<br />  <strong>&lt;title name=&quot;Woodpecker&quot;<br />      refid=&quot;woodpecker_title_refid&quot;<br />      active=&quot;TRUE&quot;<br />      video-full-refid=&quot;woodpecker_asset_refid&quot;&gt;<br />    &lt;short-description&gt;<br />      Short description for woodpecker.<br />    &lt;/short-description&gt;<br />    &lt;long-description&gt;<br />      Long description for woodpecker.<br />    &lt;/long-description&gt;<br />  &lt;/title&gt;<br /></strong>&lt;/publisher-upload-manifest&gt;</code></pre>
     </ol>
     </div>
     <div class="BCL-taskSubsection"><!-- Steps subheading -->
