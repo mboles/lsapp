@@ -8,7 +8,7 @@
 <body style="font-family:sans-serif;">
 <h1>Quick Start: Using FTP Batch Provisioning to re-encode videos</h1>
 <!-- beginning of Drupal content -->
-<p class="BCL-objective">This Quick Start will show you how to re-encode videos  using FTP batch provisioning.</p>
+<p class="BCL-objective">This Quick Start will show you how to re-encode videos  using FTP batch provisioning. For a  discussion on why you would want to re-ecode videos see the document <a href="internal:node/3412">Re-Transcoding Existing Videos using FTP Batch Provisioning</a>.</p>
 <!--break-->
 <div>
 <p>After completing this Quick Start you should be able to:</p>
@@ -26,7 +26,7 @@
 <p>First, you will create the XML manifest file.</p>
 <ol class="BCL-taskSteps">
     <li>Create an XML manifest file with the XML declaration. Include the <code>&lt;publisher-upload-manifest&gt;</code> root tag with a nested <code>&lt;notify&gt;</code> tag.</li>
-    <p class="BCL-aside">Note: For details on how to create the XML manifest file with the root tag, refer to <a href="http://files.brightcove.com/BatchProvisioningQuickStart.xml">Quick Start: Using FTP batch provisioning to upload videos</a>.</p>
+    <p class="BCL-aside">Note: For details on how to create the XML manifest file with the root tag, refer to <a href="internal:node/10592">Quick Start: Using FTP Batch Provisioning to Upload Videos</a>.</p>
     <li>Check to be sure your manifest file appears as follows, but with your respective values.
     <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </li>
@@ -101,6 +101,6 @@
 </div>
 </div>
   <!-- End of Drupal content --> 
-</div>
+
 </body>
 </html>
