@@ -28,9 +28,9 @@
 <p>Now, you will create an FTP email account and a Video Cloud user account.</p>
 <ol class="BCL-taskSteps">
     <li>Create an email account, such as <code>BrightcoveFTP@mycompany.com</code>, to receive messages from Brightcove about your batch provisioning jobs.</li>
-    <li>Create a Video Cloud account for a dedicated FTP user with the email address created in step 1. Set the <code>Role</code> to <code>Standard</code>, and uncheck access to <code>Media</code>, <code>Publishing</code> and <code>Advertising</code>. <img src="http://img.brightcove.com/node10592_createFTPUser.png" width="787" height="180" alt="" /></li>
+    <li>Create a Video Cloud account for a dedicated FTP user with the email address created in step 1. Set the <code>Role</code> to <code>Standard</code>, and uncheck access to <code>Media</code>, <code>Publishing</code> and <code>Advertising</code>. <img src="http://img.brightcove.com/node10592_createFTPUser.png" width="650" height="148" alt="" /></li>
     <li>Check to be sure your newly created user appears as follows:</li>
-    <img src="http://img.brightcove.com/node10592_newlyCreateUser1.png" width="784" height="49" alt="" />
+    <img src="http://img.brightcove.com/node10592_newlyCreateUser1.png" width="650" height="40" alt="" />
     <li>Check the FTP user's newly created email address from step 1 and follow the directions to create a password for the  user's Video Cloud account.</li>
     <p class="BCL-aside">Note: This email address and password will also be set as the credentials for the Brightcove FTP server where you will upload your videos.</p>
     <li>Using your normal email address, <a href="https://support.brightcove.com/en/contact/create">submit a support case</a> to Brightcove requesting FTP access for the new user. You must include the following in the email:
@@ -145,7 +145,7 @@
                 <tr>
                     <td>hash-code</td>
                     <td>Optional, but recommended</td>
-                    <td>Allows Video Cloud to validate the upload process; calculated by third party utilities (see step 9 above)</td>
+                    <td>Allows Video Cloud to validate the upload process; calculated by third party utilities (see section on MD5 checksums above)</td>
                 </tr>
                 <tr>
                     <td>encode-to</td>
@@ -170,8 +170,7 @@
         </ul>
         </li>
         <li>Check to be sure your manifest file appears as follows, but, with your respective values.</li>
-        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef73&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt; </strong>
-&lt;/publisher-upload-manifest&gt;</code></pre>
+        <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />&lt;publisher-upload-manifest publisher-id=&quot;1234567800001&quot; preparer=&quot;MB FTP&quot; report-success=&quot;true&quot;&gt;<br />  &lt;notify email=&quot;bclftp@gmail.com&quot; /&gt;<br />  <strong>&lt;asset filename=&quot;Bird_Woodpecker.mp4&quot;<br />      refid=&quot;woodpecker_asset_refid&quot;<br />      type=&quot;VIDEO_FULL&quot;<br />      hash-code=&quot;ea87a8c52cf85d89b4b1c8403c9ef73&quot;<br />      encode-to=&quot;MP4&quot;<br />      encode-multiple=&quot;true&quot;/&gt; </strong><br />&lt;/publisher-upload-manifest&gt;</code></pre>
     </ol>
     </div>
     <div class="BCL-taskSubsection"><!-- Steps subheading -->
